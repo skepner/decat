@@ -1,15 +1,12 @@
-#pragma once
+#include <unistd.h>
 
-#include <string_view>
+#include "process.hh"
 
 // ----------------------------------------------------------------------
 
-class Processor
+void Processor::process(std::string_view chunk)
 {
-  public:
-    Processor() = default;
-
-    void process(std::string_view chunk);
-};
+    write(STDOUT_FILENO, chunk.data(), chunk.size());
+}
 
 // ----------------------------------------------------------------------

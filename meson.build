@@ -37,6 +37,7 @@ zstd = dependency('libzstd')
 sources = [
   'decat.cc',
   'read.cc',
+  'process.cc',
 ]
 
 decat = executable(

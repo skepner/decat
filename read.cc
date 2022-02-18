@@ -41,13 +41,6 @@ void read_file_descriptor(int fd)
         else {
             processor.process(std::string_view(buffer.data(), static_cast<size_t>(nread)));
         }
-
-        // getline(std::cin, message);
-        // if (std::cin.eof()) {
-        //   std::cout << "eof." << std::endl;
-        //   break;
-        // }
-        // std::cout << "read: " << message << std::endl;
     }
 }
 
