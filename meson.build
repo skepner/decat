@@ -41,6 +41,7 @@ sources = [
   'brotli.cc',
   'bzip2.cc',
   'gzip.cc',
+  'xz.cc',
 ]
 
 decat = executable(
