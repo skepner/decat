@@ -1,4 +1,4 @@
-#include <iostream>
+// #include <iostream>
 
 #include "gzip.hh"
 
@@ -6,7 +6,8 @@
 
 GZip::~GZip()
 {
-    inflateEnd(&strm_);
+    if (initialized_)
+        inflateEnd(&strm_);
 }
 
 // ----------------------------------------------------------------------

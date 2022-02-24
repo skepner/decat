@@ -39,6 +39,7 @@ sources = [
   'read.cc',
   'process.cc',
   'brotli.cc',
+  'bzip2.cc',
   'gzip.cc',
 ]
 
