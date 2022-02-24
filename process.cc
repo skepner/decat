@@ -9,12 +9,19 @@
 
 // ----------------------------------------------------------------------
 
-class Plain : public Compressor
+class Plain_Compressor
 {
   public:
-    static bool compressed(std::string_view /*input*/) { return true; }
-    std::string decompress(std::string_view input) override { return std::string{input}; }
+    using stream = int;
+    static constexpr ssize_t BufSize = 409600;
+    static inline std::string name() { return "plain"; }
+    static inline void destroy(stream&) {}
+    static inline bool compressed(std::string_view /*input*/) { return true; }
 };
+
+template <> inline std::string Decompressor<Plain_Compressor>::decompress(std::string_view input) { return std::string{input}; }
+
+using Plain = Decompressor<Plain_Compressor>;
 
 // ----------------------------------------------------------------------
 
