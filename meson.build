@@ -38,6 +38,7 @@ sources = [
   'decat.cc',
   'read.cc',
   'process.cc',
+  'gzip.cc',
 ]
 
 decat = executable(
