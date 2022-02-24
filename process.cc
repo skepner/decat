@@ -2,6 +2,7 @@
 
 #include "process.hh"
 
+#include "brotli.hh"
 #include "gzip.hh"
 
 // ----------------------------------------------------------------------
@@ -20,6 +21,8 @@ void Processor::process(std::string_view chunk)
     if (!compressor_) {
         if (GZip::compressed(chunk))
             compressor_ = std::make_unique<GZip>();
+        else if (Brotli::compressed(chunk))
+            compressor_ = std::make_unique<Brotli>();
         else
             compressor_ = std::make_unique<Plain>();
     }
