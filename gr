@@ -1,0 +1,30 @@
+#! /usr/bin/env bash
+set -o errexit -o errtrace -o pipefail -o nounset
+# -o xtrace
+
+run_ripgrep()
+{
+    export RIPGREP_CONFIG_PATH=
+    if [[ -t 0 ]]; then
+        N_FLAG=-n;  # -n if not searching in stdin
+    fi
+
+    exec rg -i --pre decat --no-heading ${N_FLAG} "$@"
+    # exec rga -i --no-heading ${N_FLAG} "$@"
+}
+
+run_ugrep()
+{
+    CASE="--smart-case"
+    for passed in "$@"; do
+        case "${passed}" in
+             -i)
+                 CASE=""
+                 ;;
+        esac
+    done
+    ugrep --decompress ${CASE} --line-number -J7  --filter="ace,tjz,jxz:/Users/eu/bin/ace-decompress" "$@"
+}
+
+run_ripgrep "$@"
+# run_ugrep "$@"
