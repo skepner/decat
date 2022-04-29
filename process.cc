@@ -34,7 +34,9 @@ void Processor::process(std::string_view chunk)
     }
 
     const auto decompressed = compressor_->decompress(chunk);
-    write(STDOUT_FILENO, decompressed.data(), decompressed.size());
+    if (write(STDOUT_FILENO, decompressed.data(), decompressed.size()) < 0) {
+        fprintf(stderr, "> ERROR: writing decompressed data failed: %s", std::strerror(errno));
+    }
 }
 
 // ----------------------------------------------------------------------
