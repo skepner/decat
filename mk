@@ -52,7 +52,7 @@ find_compiler()
 {
     case $(uname) in
         Darwin)
-            export CXX=/usr/local/opt/llvm/bin/clang++
+            export CXX=${HOME}/.homebrew/opt/llvm/bin/clang++
             MK_TIME=gtime
             ;;
         Linux)
