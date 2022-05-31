@@ -5,6 +5,7 @@ set -o errexit -o errtrace -o pipefail -o nounset
 run_ripgrep()
 {
     export RIPGREP_CONFIG_PATH=
+    local N_FLAG=
     if [[ -t 0 ]]; then
         N_FLAG=-n;  # -n if not searching in stdin
     fi
